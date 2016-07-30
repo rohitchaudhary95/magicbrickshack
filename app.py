@@ -47,4 +47,4 @@ api.add_resource(TodoSimple, '/<string:text12>')
 api.add_resource(TodoSimple, '/')
 
 if __name__ == '__main__':
-	app.run(debug=True)
+	app.run()
