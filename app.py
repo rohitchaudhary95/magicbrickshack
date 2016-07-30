@@ -19,29 +19,32 @@ cities = ['delhi','new delhi','faridabad','noida', 'greater noida','gurgaon']
 builders = ['puri', 'bptp', 'gaurs']
 
 class TodoSimple(Resource):
-    def get(self, text12):
-	location=""
-	keywords=[]
-	p = text12
-	text = p.split('/n')
-	for data in text:
-	    	data=data.lower()
-	    	final = data.split()
-	    	#final = final.lower()
-	    	for x in final:
-			if x in stopWords or x == "bhk" or x in words or '.' in x or x.isdigit() :
-				continue
-			elif x in builders:
-				keywords.append(x)
-			elif x in cities:
-				location=x
-			else:
-				keywords.append(x)
-	#resp = jsonify({'location': location})
-        return {'loc': location,'key':keywords}
+	def get(self):
+		return {'text':'Hello'}
+    	def get(self, text12):
+		location=""
+		keywords=[]
+		p = text12
+		text = p.split('/n')
+		for data in text:
+		    	data=data.lower()
+		    	final = data.split()
+		    	#final = final.lower()
+		    	for x in final:
+				if x in stopWords or x == "bhk" or x in words or '.' in x or x.isdigit() :
+					continue
+				elif x in builders:
+					keywords.append(x)
+				elif x in cities:
+					location=x
+				else:
+					keywords.append(x)
+		#resp = jsonify({'location': location})
+        	return {'loc': location,'key':keywords}
 
     
 api.add_resource(TodoSimple, '/<string:text12>')
+api.add_resource(TodoSimple, '/')
 
 if __name__ == '__main__':
 	app.run(debug=True)
