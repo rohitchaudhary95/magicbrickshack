@@ -42,9 +42,12 @@ class TodoSimple(Resource):
 		#resp = jsonify({'location': location})
         	return {'loc': location,'key':keywords}
 
+class TodoSimple1(Resource):
+	def get(self):
+		return {'text':'Hello'}
     
 api.add_resource(TodoSimple, '/<string:text12>')
-api.add_resource(TodoSimple, '/')
+api.add_resource(TodoSimple1, '/')
 
 if __name__ == '__main__':
 	app.run()
